@@ -1,0 +1,66 @@
+//import NodeJS modules
+var mysql=require('mysql');
+var readline=require('readline');
+
+//establish connection to fur_tales database
+var connection=mysql.createConnection({
+	
+	host:'localhost',
+	user:'root',
+	password:'',
+	database:'fur_tales'
+
+});
+
+connection.connect(function(error){
+	//error will be thrown if problem with details of host, user, password, database
+	if(error){
+		console.log('Error Connecting to fur_tales Database');
+	}
+
+});
+//code above this point is minimum requirement to connect server to database (except readline)
+
+//interface to establish I/O stream to DB
+var readline=readline.createInterface({
+	
+	input:process.stdin,
+	output:process.stdout
+
+});
+
+//accept user manually input data to console
+readline.question('Enter User ID ',(id)=>{
+	var user={userId:id};
+readline.question('Enter User Name ',(name)=>{
+	var user={userName:name, userId:id};
+
+	//input userId, userName into fur_tales table via readline to create new row of data
+	connection.query('INSERT INTO fur_tales SET ?', user, function(error){ //2 var user= above
+
+	if(error) throw error;
+
+	//echo all rows from table as new data created
+	connection.query('SELECT * FROM fur_tales', function(error,rows){
+		if(error) throw error;
+
+			//Heading
+			console.log('\nData from fur_tales\n');
+
+				for(var i=0; i<rows.length; i++)
+					{
+						console.log(rows[i].userId, rows[i].userName);
+					};
+});
+
+	});
+		readline.close();
+});});
+
+//current name of DB is: change name of fur_tales(#7) in seven places to actual name of DB or JJ's testDB name
+
+//no password at the moment, need Group pw
+
+//explain ? symbol meaning
+
+//is the parameter duplication needed in this line of code? var user={userName:name, userId:id}; OR can the one line of code just above it be deleted?
