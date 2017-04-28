@@ -22,7 +22,11 @@
 <p>You are currently logged in as <%= request.getParameter("sp_email") %></p>
 
 <sql:query dataSource="${firstname}" var="result">
-SELECT * FROM transaction WHERE sp_email="<%= request.getParameter("sp_email") %>";
+SELECT * 
+FROM transaction INNER JOIN service_provider 
+ON transaction.staff_id = service_provider.staff_id 
+WHERE service_provider.sp_email="<%= request.getParameter("sp_email") %>" 
+AND transaction.payment_status="Not Paid";
 </sql:query>
 
 <table border="1" width="100%">
@@ -38,6 +42,7 @@ SELECT * FROM transaction WHERE sp_email="<%= request.getParameter("sp_email") %
 <td><c:out value="${row.client_id}"/></td>
 <td><c:out value="${row.price}"/></td>
 <td><c:out value="${row.payment_status}"/></td>
+<td><input type="submit" value="Mark as Done"></td>
 </tr>
 </c:forEach>
 </table>
