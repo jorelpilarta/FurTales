@@ -18,7 +18,8 @@ public class Validate {
         ps.setString(2, sp_pw);
         ResultSet rs =ps.executeQuery();
         st = rs.next();
-       
+
+        
      }catch(Exception e)
      {
          e.printStackTrace();
