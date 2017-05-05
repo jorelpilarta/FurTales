@@ -1,0 +1,33 @@
+<html><!DOCTYPE html>
+<head>
+	<title>Service Providers</title>
+</head>
+<body>
+<h1>Service Providers List</h1>
+<table border="1" cellpadding="7" cellspacing="7">
+	<tr>
+    <th width="50px">No</th>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Email</th>
+    <th>Contact Number</th>
+  </tr>
+  <% if(data.length){ 
+    for(var i = 0;i < data.length;i++) { %>
+  <tr>
+    <td><%=(i+1)%></td>
+    <td><%=data[i].last_name%></td>
+    <td><%=data[i].first_name%></td>
+    <td><%=data[i].sp_email%></td>
+    <td><%=data[i].sp_cn%></td>    
+  </tr>
+  <% }
+  }else{ %>
+  <tr>
+    <td colspan="3">No user</td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>
