@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `furtalesschema` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `furtalesschema`;
+CREATE DATABASE  IF NOT EXISTS `furtales` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `furtales`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: furtalesschema
+-- Host: localhost    Database: furtales
 -- ------------------------------------------------------
--- Server version	5.7.14
+-- Server version	5.7.11
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,14 +25,12 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `AdminID` int(11) NOT NULL AUTO_INCREMENT,
-  `LastName` varchar(255) NOT NULL,
-  `LirstName` varchar(255) NOT NULL,
-  `ContactNumber` int(11) NOT NULL,
-  `Email` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`AdminID`),
-  UNIQUE KEY `AdminID` (`AdminID`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
+  `admin_id` smallint(5) NOT NULL AUTO_INCREMENT,
+  `last_name` varchar(15) NOT NULL,
+  `first_name` varchar(15) NOT NULL,
+  `admin_cn` varchar(13) NOT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +39,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (100,'Gates','Bill','09198454596'),(101,'Jobs','Steve','09177892578');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,18 +51,14 @@ DROP TABLE IF EXISTS `chat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `chat` (
-  `ChatID` int(11) NOT NULL AUTO_INCREMENT,
-  `StaffID` int(11) NOT NULL,
-  `ClientID` int(11) NOT NULL,
-  `Message` longtext NOT NULL,
-  `MessageDate` timestamp NOT NULL,
-  PRIMARY KEY (`ChatID`),
-  UNIQUE KEY `ChatID` (`ChatID`),
-  UNIQUE KEY `StaffID` (`StaffID`),
-  UNIQUE KEY `ClientID` (`ClientID`),
-  CONSTRAINT `ClientID` FOREIGN KEY (`ClientID`) REFERENCES `client` (`ClientID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `StaffID` FOREIGN KEY (`StaffID`) REFERENCES `serviceprovider` (`StaffID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=500 DEFAULT CHARSET=latin1;
+  `message_id` smallint(5) NOT NULL AUTO_INCREMENT,
+  `sender` smallint(5) NOT NULL,
+  `receiver` smallint(5) NOT NULL,
+  `timestamp` timestamp(6) NOT NULL,
+  `message` longtext NOT NULL,
+  PRIMARY KEY (`message_id`),
+  UNIQUE KEY `message_id_UNIQUE` (`message_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7001 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,17 +78,14 @@ DROP TABLE IF EXISTS `client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `client` (
-  `ClientID` int(11) NOT NULL AUTO_INCREMENT,
-  `LastName` varchar(255) NOT NULL,
-  `FirstName` varchar(255) NOT NULL,
-  `ClientAddress` varchar(255) NOT NULL,
-  `ContactNumber` int(11) NOT NULL,
-  `ClientEmail` varchar(255) NOT NULL,
-  PRIMARY KEY (`ClientID`),
-  UNIQUE KEY `ClientID` (`ClientID`),
-  UNIQUE KEY `ContactNumber` (`ContactNumber`),
-  UNIQUE KEY `ClientEmail` (`ClientEmail`)
-) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET=latin1;
+  `client_id` smallint(5) NOT NULL AUTO_INCREMENT,
+  `last_name` varchar(25) NOT NULL,
+  `first_name` varchar(25) NOT NULL,
+  `client_address` varchar(100) NOT NULL,
+  `client_cn` varchar(13) NOT NULL,
+  `client_email` varchar(50) NOT NULL,
+  PRIMARY KEY (`client_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3002 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,48 +94,8 @@ CREATE TABLE `client` (
 
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
+INSERT INTO `client` VALUES (3000,'Mortel','Bobbie','123 Fake Street','09774835197','mortelbobbie@gmail.com'),(3001,'Ugaldo','Jovi','456 Real Street','09271523259','ugaldojovi@gmail.com');
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `log`
---
-
-DROP TABLE IF EXISTS `log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `log` (
-  `LogID` int(11) NOT NULL AUTO_INCREMENT,
-  `ServiceID` int(11) NOT NULL,
-  `TransactionID` int(11) NOT NULL,
-  `ClientID` int(11) NOT NULL,
-  `StaffID` int(11) NOT NULL,
-  `LogDate` date NOT NULL,
-  `LogTime` time(6) NOT NULL,
-  PRIMARY KEY (`LogID`),
-  UNIQUE KEY `LogID` (`LogID`),
-  UNIQUE KEY `ServiceID` (`ServiceID`),
-  UNIQUE KEY `TransactionID` (`TransactionID`),
-  UNIQUE KEY `ClientID` (`ClientID`),
-  UNIQUE KEY `StaffID` (`StaffID`),
-  UNIQUE KEY `LogDate_UNIQUE` (`LogDate`),
-  UNIQUE KEY `LogTime_UNIQUE` (`LogTime`),
-  KEY `Date_idx` (`LogDate`),
-  CONSTRAINT `Date` FOREIGN KEY (`LogDate`) REFERENCES `transaction` (`TransactionDate`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `EmployeeID` FOREIGN KEY (`StaffID`) REFERENCES `serviceprovider` (`StaffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `ServicesID` FOREIGN KEY (`ServiceID`) REFERENCES `service` (`ServiceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `TransactionID` FOREIGN KEY (`TransactionID`) REFERENCES `transaction` (`TransactionID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `UserID` FOREIGN KEY (`ClientID`) REFERENCES `client` (`ClientID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=700 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `log`
---
-
-LOCK TABLES `log` WRITE;
-/*!40000 ALTER TABLE `log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `log` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -154,14 +106,12 @@ DROP TABLE IF EXISTS `service`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `service` (
-  `ServiceID` int(11) NOT NULL AUTO_INCREMENT,
-  `ServiceName` varchar(255) NOT NULL,
-  `ServiceDescription` varchar(255) NOT NULL,
-  `Price` double NOT NULL,
-  PRIMARY KEY (`ServiceID`),
-  UNIQUE KEY `ServiceID` (`ServiceID`),
-  UNIQUE KEY `ServiceName` (`ServiceName`)
-) ENGINE=InnoDB AUTO_INCREMENT=400 DEFAULT CHARSET=latin1;
+  `service_id` smallint(5) NOT NULL AUTO_INCREMENT,
+  `service_name` varchar(20) NOT NULL,
+  `price` double NOT NULL,
+  `service_description` text NOT NULL,
+  PRIMARY KEY (`service_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4003 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,41 +120,38 @@ CREATE TABLE `service` (
 
 LOCK TABLES `service` WRITE;
 /*!40000 ALTER TABLE `service` DISABLE KEYS */;
+INSERT INTO `service` VALUES (4000,'Bath and Tidy',500,'Full body bath'),(4001,'Full Style and Groom',600,'Full style and groom'),(4002,'Pamper Me',650,'Full groom with 5 minute therapeutic massage');
 /*!40000 ALTER TABLE `service` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `serviceprovider`
+-- Table structure for table `service_provider`
 --
 
-DROP TABLE IF EXISTS `serviceprovider`;
+DROP TABLE IF EXISTS `service_provider`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `serviceprovider` (
-  `StaffID` int(11) NOT NULL AUTO_INCREMENT,
-  `ServiceID` int(11) NOT NULL,
-  `LastName` varchar(255) NOT NULL,
-  `FirstName` varchar(255) NOT NULL,
-  `StaffEmail` varchar(255) NOT NULL,
-  `ContactNumber` int(11) NOT NULL,
-  PRIMARY KEY (`StaffID`),
-  UNIQUE KEY `StaffID` (`StaffID`),
-  UNIQUE KEY `ServiceID` (`ServiceID`),
-  UNIQUE KEY `LastName` (`LastName`),
-  UNIQUE KEY `FirstName` (`FirstName`),
-  UNIQUE KEY `StaffEmail` (`StaffEmail`),
-  UNIQUE KEY `ContactNumber` (`ContactNumber`),
-  CONSTRAINT `ServiceID` FOREIGN KEY (`ServiceID`) REFERENCES `service` (`ServiceID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=300 DEFAULT CHARSET=latin1;
+CREATE TABLE `service_provider` (
+  `staff_id` smallint(5) NOT NULL AUTO_INCREMENT,
+  `last_name` varchar(15) NOT NULL,
+  `first_name` varchar(15) NOT NULL,
+  `service_id` smallint(5) NOT NULL,
+  `sp_email` varchar(50) NOT NULL,
+  `sp_cn` varchar(13) NOT NULL,
+  `sp_pw` varchar(10) NOT NULL,
+  PRIMARY KEY (`staff_id`),
+  KEY `service_id` (`service_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2002 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `serviceprovider`
+-- Dumping data for table `service_provider`
 --
 
-LOCK TABLES `serviceprovider` WRITE;
-/*!40000 ALTER TABLE `serviceprovider` DISABLE KEYS */;
-/*!40000 ALTER TABLE `serviceprovider` ENABLE KEYS */;
+LOCK TABLES `service_provider` WRITE;
+/*!40000 ALTER TABLE `service_provider` DISABLE KEYS */;
+INSERT INTO `service_provider` VALUES (2000,'Liwanag','John Derick',4000,'liwanag.john1234@gmail.com','09269543937','1234'),(2001,'Mendez','Camila',4001,'mendezcamila@gmail.com','09152044933','1234');
+/*!40000 ALTER TABLE `service_provider` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -215,24 +162,16 @@ DROP TABLE IF EXISTS `transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaction` (
-  `TransactionID` int(11) NOT NULL AUTO_INCREMENT,
-  `StaffID` int(11) NOT NULL,
-  `ClientID` int(11) NOT NULL,
-  `ServiceID` int(11) NOT NULL,
-  `TransactionDate` date NOT NULL,
-  `TransactionTime` time(6) NOT NULL,
-  `Price` double NOT NULL,
-  `PaymentStatus` text NOT NULL,
-  PRIMARY KEY (`TransactionID`),
-  UNIQUE KEY `TransactionID` (`TransactionID`),
-  UNIQUE KEY `StaffID` (`StaffID`),
-  UNIQUE KEY `ClientID` (`ClientID`),
-  UNIQUE KEY `ServiceID` (`ServiceID`),
-  UNIQUE KEY `TransactionTime_UNIQUE` (`TransactionTime`),
-  UNIQUE KEY `TransactionDate_UNIQUE` (`TransactionDate`),
-  CONSTRAINT `CustomerID` FOREIGN KEY (`ClientID`) REFERENCES `client` (`ClientID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `LaborID` FOREIGN KEY (`ServiceID`) REFERENCES `service` (`ServiceID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=600 DEFAULT CHARSET=latin1;
+  `transaction_id` smallint(5) NOT NULL AUTO_INCREMENT,
+  `client_id` smallint(5) NOT NULL,
+  `payment_status` varchar(10) NOT NULL DEFAULT 'Not Paid',
+  `transactions_date` date NOT NULL,
+  `transaction_time` time NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`transaction_id`),
+  KEY `client_id` (`client_id`),
+  CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5002 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +180,41 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+INSERT INTO `transaction` VALUES (5001,3000,'Not Paid','2017-05-02','08:00:00',500);
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `transaction_details`
+--
+
+DROP TABLE IF EXISTS `transaction_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transaction_details` (
+  `details_id` smallint(5) NOT NULL AUTO_INCREMENT,
+  `staff_id` smallint(5) NOT NULL,
+  `transaction_id` smallint(5) NOT NULL,
+  `last_name` varchar(15) NOT NULL,
+  `first_name` varchar(15) NOT NULL,
+  `service_id` smallint(5) NOT NULL,
+  PRIMARY KEY (`details_id`),
+  UNIQUE KEY `details_id_UNIQUE` (`details_id`),
+  KEY `staff_id_idx` (`staff_id`),
+  KEY `transaction_id_idx` (`transaction_id`),
+  KEY `service_id_idx` (`service_id`),
+  CONSTRAINT `service_id` FOREIGN KEY (`service_id`) REFERENCES `service` (`service_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6002 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transaction_details`
+--
+
+LOCK TABLES `transaction_details` WRITE;
+/*!40000 ALTER TABLE `transaction_details` DISABLE KEYS */;
+INSERT INTO `transaction_details` VALUES (6001,2000,5001,'Liwanag','John Derick',4000);
+/*!40000 ALTER TABLE `transaction_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -253,4 +226,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-29  0:43:57
+-- Dump completed on 2017-05-04 21:43:56
