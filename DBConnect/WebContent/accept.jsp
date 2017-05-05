@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Accepted</title>
     </head>
     <body>
     
@@ -25,7 +25,7 @@
 		<p><c:out value="${param.id}" /> </p>
 		
 		<sql:update dataSource="${firstname}" var="count">
-			UPDATE transaction SET payment_status = "Paid" WHERE transaction_id='${param.id}'
+			UPDATE transaction SET request_status = "Accepted" WHERE transaction_id='${param.id}'
 		</sql:update>
 		<c:if test="${count>=1}">
 			<p> Successful! </p>

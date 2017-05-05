@@ -44,14 +44,14 @@ AND transaction.payment_status="Paid";
 <td><c:out value="${row.transaction_id}"/></td>
 <td><c:out value="${row.service_id}"/></td>
 <td><c:out value="${row.client_id}"/></td>
-<td><c:out value="${row.transaction_date}"/></td>
+<td><c:out value="${row.transactions_date}"/></td>
 <td><c:out value="${row.transaction_time}"/></td>
 <td><c:out value="${row.price}"/></td>
 </tr>
 </c:forEach>
 </table>
 
-<a href="test.jsp"><p> Back to Schedule </p></a> 
+<p><a href="test.jsp"> Back to Schedule </a></p>
 
 </body>
 </html>
