@@ -1,0 +1,41 @@
+<html><!DOCTYPE html>
+<head>
+	<title>SP Registration Form</title>
+</head>
+<body>
+<h1>Registration Form</h1>
+
+<form method="POST" action="/spreg">
+  <label for="staff_id"> Id </label>
+  <input type="text" name="staff_id" value="<%= spreg.last_name %>">
+  <br>
+
+  <label for="last_name"> Last Name </label>
+  <input type="text" name="last_name" value="<%= spreg.last_name %>">
+  <br>
+
+  <label for="first_name"> First Name </label>
+  <input type="text" name="first_name" value="<%= spreg.first_name %>">
+  <br>
+
+  <label for="service_id"> Service Id </label>
+  <input type="text" name="service_id" value="<%= spreg.service_id %>">
+  <br>
+
+  <label for="sp_email"> Email </label>
+  <input type="text" name="sp_email" value="<%= spreg.sp_email%>">
+  <br>
+
+  <label for="sp_cn"> Contact Number </label>
+  <input type="text" name="sp_cn" value="<%= spreg.sp_cn %>">
+  <br>
+
+  <label for="sp_pw"> Password </label>
+  <input type="text" name="sp_pw" value="<%= spreg.sp_pw %>">
+  <br>
+
+  <input type="submit" value="submit">
+</form>
+
+</body>
+</html>

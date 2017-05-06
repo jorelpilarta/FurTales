@@ -1,0 +1,34 @@
+<html><!DOCTYPE html>
+<head>
+	<title> Services </title>
+</head>
+<body>
+<h1>Service List</h1>
+<table border="1" cellpadding="7" cellspacing="7">
+	<tr>
+    <th width="50px">No</th>
+    <th>Service Id</th>
+    <th>Service Name</th>
+    <th>Price</th>
+    <th>Service Description </th>
+  </tr>
+  <% if(service.length){
+    for(var i = 0;i < service.length;i++) { %>
+  <tr>
+    <td><%=(i+1)%></td>
+    <td><%=service[i].service_id%></td>
+    <td><%=service[i].service_name%></td>
+    <td><%=service[i].price%></td>
+    <td><%=service[i].service_description%></td>
+  </tr>
+  <% }
+  }else{ %>
+
+  <tr>
+    <td colspan="3">No user</td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>
