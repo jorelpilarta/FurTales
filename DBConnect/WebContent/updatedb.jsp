@@ -28,7 +28,7 @@
 			UPDATE transaction SET payment_status = "Paid" WHERE transaction_id='${param.id}'
 		</sql:update>
 		<c:if test="${count>=1}">
-			<p> Successful! </p>
+			<p> Success! </p>
 		</c:if>	
 		<p><a href="test.jsp"> Back to Schedule </a></p> 
 

@@ -96,6 +96,7 @@
 					<td><c:out value="${row.transaction_time}"/></td>
 					<td><c:out value="${row.price}"/></td>
 					<td><a href="accept.jsp?id=<c:out value= "${row.transaction_id}"/>">Accept</a></td>
+					<td><a href="decline.jsp?id=<c:out value= "${row.transaction_id}"/>">Decline</a></td>
 				</tr>
 				</c:forEach>
 			</table>

@@ -23,10 +23,10 @@
 		</sql:query>
 			
 		<sql:update dataSource="${firstname}" var="count">
-			UPDATE transaction SET request_status = "Accepted" WHERE transaction_id='${param.id}'
+			UPDATE transaction SET request_status = "Declined" WHERE transaction_id='${param.id}'
 		</sql:update>
 		<c:if test="${count>=1}">
-			<p> You have successfully accepted a booking with a Transaction ID of <c:out value="${param.id}" /></p>
+			<p> You have declined a booking with a Transaction ID of <c:out value="${param.id}" /></p>
 		</c:if>	
 		<p><a href="test.jsp"> Back to Schedule </a></p> 
 
