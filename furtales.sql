@@ -94,7 +94,9 @@ CREATE TABLE IF NOT EXISTS `client` (
 
 INSERT INTO `client` (`ClientID`, `LastName`, `FirstName`, `ClientAddress`, `ContactNumber`, `ClientEmail`, `Password`, `Username`) VALUES
 (1, 'Ugaldo', 'Jovi', 'Lower Brookside, Baguio City', 912345678, 'joviugaldo@gmail.com', '742529ca61777ddaf71420554eb93e82', 'Jovi');
-
+(2, 'Mortel', 'Bobbie', 'Sumulong Street, Baguio City', 194747643, 'bdm.mortie@yahoo.com', '5c0d1897a4ef0d5315d6a3d793cb5048', 'Bobbie');
+(3, 'Pilarta', 'Ysmael', 'Bonifacio Street, Baguio City', 943593564, 'joelpilartal@gmail.com', '63b5872f7ef84e4cde0a8555266562c4', 'Ysmael');
+(4, 'Soriano', 'Rosmella', 'QM, Baguio City', 932623257, 'rosmellajhoy@yahoo.com', '17a05e89e0a1235366b67aa1f938ca38', 'Rosmella');
 -- --------------------------------------------------------
 
 --
