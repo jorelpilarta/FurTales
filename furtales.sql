@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.2
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2017 at 04:07 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: May 09, 2017 at 08:44 AM
+-- Server version: 5.7.9
+-- PHP Version: 5.6.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `furtales`
+-- Database: `furtalesschema`
 --
 
 -- --------------------------------------------------------
@@ -26,20 +26,26 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `admin_id` smallint(5) NOT NULL,
-  `last_name` varchar(15) NOT NULL,
-  `first_name` varchar(15) NOT NULL,
-  `admin_cn` varchar(13) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `AdminID` int(11) NOT NULL AUTO_INCREMENT,
+  `LastName` varchar(255) NOT NULL,
+  `FirstName` varchar(255) NOT NULL,
+  `ContactNumber` int(11) NOT NULL,
+  `Email` varchar(254) DEFAULT NULL,
+  PRIMARY KEY (`AdminID`),
+  UNIQUE KEY `AdminID` (`AdminID`)
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `last_name`, `first_name`, `admin_cn`) VALUES
-(100, 'Gates', 'Bill', '09198454596'),
-(101, 'Jobs', 'Steve', '09177892578');
+INSERT INTO `admin` (`AdminID`, `LastName`, `FirstName`, `ContactNumber`, `Email`) VALUES
+(101, 'Donaldson', 'Duane', 922808204, 'duanedonaldson@gmail.com'),
+(102, 'Dupingay', 'Joseph', 943708025, 'josephdupingay@gmail.com'),
+(103, 'Fernandez', 'Alainne', 906478252, 'alainnefernandez@gmail.com'),
+(104, 'Mones', 'Angelica', 995432634, 'angelicamones@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -47,13 +53,18 @@ INSERT INTO `admin` (`admin_id`, `last_name`, `first_name`, `admin_cn`) VALUES
 -- Table structure for table `chat`
 --
 
-CREATE TABLE `chat` (
-  `message_id` smallint(5) NOT NULL,
-  `sender` smallint(5) NOT NULL,
-  `receiver` smallint(5) NOT NULL,
-  `timestamp` timestamp(6) NOT NULL,
-  `message` longtext NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `chat`;
+CREATE TABLE IF NOT EXISTS `chat` (
+  `ChatID` int(11) NOT NULL AUTO_INCREMENT,
+  `StaffID` int(11) NOT NULL,
+  `ClientID` int(11) NOT NULL,
+  `Message` longtext NOT NULL,
+  `MessageDate` timestamp NOT NULL,
+  PRIMARY KEY (`ChatID`),
+  UNIQUE KEY `ChatID` (`ChatID`),
+  UNIQUE KEY `StaffID` (`StaffID`),
+  UNIQUE KEY `ClientID` (`ClientID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -61,22 +72,54 @@ CREATE TABLE `chat` (
 -- Table structure for table `client`
 --
 
-CREATE TABLE `client` (
-  `client_id` smallint(5) NOT NULL,
-  `last_name` varchar(25) NOT NULL,
-  `first_name` varchar(25) NOT NULL,
-  `client_address` varchar(100) NOT NULL,
-  `client_cn` varchar(13) NOT NULL,
-  `client_email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
+  `ClientID` int(11) NOT NULL AUTO_INCREMENT,
+  `LastName` varchar(255) NOT NULL,
+  `FirstName` varchar(255) NOT NULL,
+  `ClientAddress` varchar(255) NOT NULL,
+  `ContactNumber` int(11) NOT NULL,
+  `ClientEmail` varchar(255) NOT NULL,
+  `Password` varchar(45) NOT NULL,
+  `Username` varchar(45) NOT NULL,
+  PRIMARY KEY (`ClientID`),
+  UNIQUE KEY `ClientID` (`ClientID`),
+  UNIQUE KEY `ContactNumber` (`ContactNumber`),
+  UNIQUE KEY `ClientEmail` (`ClientEmail`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`client_id`, `last_name`, `first_name`, `client_address`, `client_cn`, `client_email`) VALUES
-(3000, 'Mortel', 'Bobbie', '123 Fake Street', '09774835197', 'mortelbobbie@gmail.com'),
-(3001, 'Ugaldo', 'Jovi', '456 Real Street', '09271523259', 'ugaldojovi@gmail.com');
+INSERT INTO `client` (`ClientID`, `LastName`, `FirstName`, `ClientAddress`, `ContactNumber`, `ClientEmail`, `Password`, `Username`) VALUES
+(1, 'Ugaldo', 'Jovi', 'Lower Brookside, Baguio City', 912345678, 'joviugaldo@gmail.com', '742529ca61777ddaf71420554eb93e82', 'Jovi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log`
+--
+
+DROP TABLE IF EXISTS `log`;
+CREATE TABLE IF NOT EXISTS `log` (
+  `LogID` int(11) NOT NULL AUTO_INCREMENT,
+  `ServiceID` int(11) NOT NULL,
+  `TransactionID` int(11) NOT NULL,
+  `ClientID` int(11) NOT NULL,
+  `StaffID` int(11) NOT NULL,
+  `LogDate` date NOT NULL,
+  `LogTime` time(6) NOT NULL,
+  PRIMARY KEY (`LogID`),
+  UNIQUE KEY `LogID` (`LogID`),
+  UNIQUE KEY `ServiceID` (`ServiceID`),
+  UNIQUE KEY `TransactionID` (`TransactionID`),
+  UNIQUE KEY `ClientID` (`ClientID`),
+  UNIQUE KEY `StaffID` (`StaffID`),
+  UNIQUE KEY `LogDate_UNIQUE` (`LogDate`),
+  UNIQUE KEY `LogTime_UNIQUE` (`LogTime`),
+  KEY `Date_idx` (`LogDate`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -84,45 +127,39 @@ INSERT INTO `client` (`client_id`, `last_name`, `first_name`, `client_address`, 
 -- Table structure for table `service`
 --
 
-CREATE TABLE `service` (
-  `service_id` smallint(5) NOT NULL,
-  `service_name` varchar(20) NOT NULL,
-  `price` double NOT NULL,
-  `service_description` text NOT NULL
+DROP TABLE IF EXISTS `service`;
+CREATE TABLE IF NOT EXISTS `service` (
+  `ServiceID` int(11) NOT NULL AUTO_INCREMENT,
+  `ServiceName` varchar(255) NOT NULL,
+  `ServiceDescription` varchar(255) NOT NULL,
+  `Price` double NOT NULL,
+  PRIMARY KEY (`ServiceID`),
+  UNIQUE KEY `ServiceID` (`ServiceID`),
+  UNIQUE KEY `ServiceName` (`ServiceName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `service`
---
-
-INSERT INTO `service` (`service_id`, `service_name`, `price`, `service_description`) VALUES
-(4000, 'Bath and Tidy', 500, 'Full body bath'),
-(4001, 'Full Style and Groom', 600, 'Full style and groom'),
-(4002, 'Pamper Me', 650, 'Full groom with 5 minute therapeutic massage');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `service_provider`
+-- Table structure for table `serviceprovider`
 --
 
-CREATE TABLE `service_provider` (
-  `staff_id` smallint(5) NOT NULL,
-  `last_name` varchar(15) NOT NULL,
-  `first_name` varchar(15) NOT NULL,
-  `service_id` smallint(5) NOT NULL,
-  `sp_email` varchar(50) NOT NULL,
-  `sp_cn` varchar(13) NOT NULL,
-  `sp_pw` varchar(10) NOT NULL
+DROP TABLE IF EXISTS `serviceprovider`;
+CREATE TABLE IF NOT EXISTS `serviceprovider` (
+  `StaffID` int(11) NOT NULL AUTO_INCREMENT,
+  `ServiceID` int(11) NOT NULL,
+  `LastName` varchar(255) NOT NULL,
+  `FirstName` varchar(255) NOT NULL,
+  `StaffEmail` varchar(255) NOT NULL,
+  `ContactNumber` int(11) NOT NULL,
+  PRIMARY KEY (`StaffID`),
+  UNIQUE KEY `StaffID` (`StaffID`),
+  UNIQUE KEY `ServiceID` (`ServiceID`),
+  UNIQUE KEY `LastName` (`LastName`),
+  UNIQUE KEY `FirstName` (`FirstName`),
+  UNIQUE KEY `StaffEmail` (`StaffEmail`),
+  UNIQUE KEY `ContactNumber` (`ContactNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `service_provider`
---
-
-INSERT INTO `service_provider` (`staff_id`, `last_name`, `first_name`, `service_id`, `sp_email`, `sp_cn`, `sp_pw`) VALUES
-(2000, 'Liwanag', 'John Derick', 4000, 'liwanag.john1234@gmail.com', '09269543937', '1234'),
-(2001, 'Mendez', 'Camila', 4001, 'mendezcamila@gmail.com', '09152044933', '1234');
 
 -- --------------------------------------------------------
 
@@ -130,120 +167,58 @@ INSERT INTO `service_provider` (`staff_id`, `last_name`, `first_name`, `service_
 -- Table structure for table `transaction`
 --
 
-CREATE TABLE `transaction` (
-  `transaction_id` smallint(5) NOT NULL,
-  `client_id` smallint(5) NOT NULL,
-  `payment_status` varchar(10) NOT NULL DEFAULT 'Not Paid',
-  `transactions_date` date NOT NULL,
-  `transaction_time` time NOT NULL,
-  `price` double NOT NULL,
-  `service_id` smallint(5) NOT NULL,
-  `staff_id` smallint(5) NOT NULL,
-  `request_status` varchar(10) NOT NULL DEFAULT 'Pending'
+DROP TABLE IF EXISTS `transaction`;
+CREATE TABLE IF NOT EXISTS `transaction` (
+  `TransactionID` int(11) NOT NULL AUTO_INCREMENT,
+  `StaffID` int(11) NOT NULL,
+  `ClientID` int(11) NOT NULL,
+  `ServiceID` int(11) NOT NULL,
+  `TransactionDate` date NOT NULL,
+  `TransactionTime` time(6) NOT NULL,
+  `Price` double NOT NULL,
+  `PaymentStatus` text NOT NULL,
+  PRIMARY KEY (`TransactionID`),
+  UNIQUE KEY `TransactionID` (`TransactionID`),
+  UNIQUE KEY `StaffID` (`StaffID`),
+  UNIQUE KEY `ClientID` (`ClientID`),
+  UNIQUE KEY `ServiceID` (`ServiceID`),
+  UNIQUE KEY `TransactionTime_UNIQUE` (`TransactionTime`),
+  UNIQUE KEY `TransactionDate_UNIQUE` (`TransactionDate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `transaction`
---
-
-INSERT INTO `transaction` (`transaction_id`, `client_id`, `payment_status`, `transactions_date`, `transaction_time`, `price`, `service_id`, `staff_id`, `request_status`) VALUES
-(5002, 3000, 'Paid', '2017-05-05', '10:00:00', 100, 4000, 2000, 'Accepted'),
-(5003, 3000, 'Paid', '2017-05-05', '11:00:00', 50, 4001, 2000, 'Accepted'),
-(5004, 3000, 'Not Paid', '2017-05-05', '04:00:00', 200, 4002, 2000, 'Accepted'),
-(5005, 3001, 'Not Paid', '2017-05-05', '04:00:00', 300, 4000, 2000, 'Accepted'),
-(5006, 3000, 'Not Paid', '2017-05-08', '08:00:00', 200, 4002, 2000, 'Pending'),
-(5007, 3000, 'Not Paid', '2017-05-10', '07:00:00', 300, 4000, 2000, 'Pending');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `chat`
---
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`message_id`),
-  ADD UNIQUE KEY `message_id_UNIQUE` (`message_id`);
-
---
--- Indexes for table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`client_id`);
-
---
--- Indexes for table `service`
---
-ALTER TABLE `service`
-  ADD PRIMARY KEY (`service_id`);
-
---
--- Indexes for table `service_provider`
---
-ALTER TABLE `service_provider`
-  ADD PRIMARY KEY (`staff_id`),
-  ADD KEY `service_id` (`service_id`);
-
---
--- Indexes for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`transaction_id`),
-  ADD KEY `client_id` (`client_id`),
-  ADD KEY `service_id` (`service_id`),
-  ADD KEY `staff_id` (`staff_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `admin_id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
---
--- AUTO_INCREMENT for table `chat`
---
-ALTER TABLE `chat`
-  MODIFY `message_id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7001;
---
--- AUTO_INCREMENT for table `client`
---
-ALTER TABLE `client`
-  MODIFY `client_id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3002;
---
--- AUTO_INCREMENT for table `service`
---
-ALTER TABLE `service`
-  MODIFY `service_id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4003;
---
--- AUTO_INCREMENT for table `service_provider`
---
-ALTER TABLE `service_provider`
-  MODIFY `staff_id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2002;
---
--- AUTO_INCREMENT for table `transaction`
---
-ALTER TABLE `transaction`
-  MODIFY `transaction_id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5008;
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `chat`
+--
+ALTER TABLE `chat`
+  ADD CONSTRAINT `ClientID` FOREIGN KEY (`ClientID`) REFERENCES `client` (`ClientID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `StaffID` FOREIGN KEY (`StaffID`) REFERENCES `serviceprovider` (`StaffID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `log`
+--
+ALTER TABLE `log`
+  ADD CONSTRAINT `Date` FOREIGN KEY (`LogDate`) REFERENCES `transaction` (`TransactionDate`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `EmployeeID` FOREIGN KEY (`StaffID`) REFERENCES `serviceprovider` (`StaffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `ServicesID` FOREIGN KEY (`ServiceID`) REFERENCES `service` (`ServiceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `TransactionID` FOREIGN KEY (`TransactionID`) REFERENCES `transaction` (`TransactionID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `UserID` FOREIGN KEY (`ClientID`) REFERENCES `client` (`ClientID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `serviceprovider`
+--
+ALTER TABLE `serviceprovider`
+  ADD CONSTRAINT `ServiceID` FOREIGN KEY (`ServiceID`) REFERENCES `service` (`ServiceID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD CONSTRAINT `service_id` FOREIGN KEY (`service_id`) REFERENCES `service` (`service_id`),
-  ADD CONSTRAINT `staff_id` FOREIGN KEY (`staff_id`) REFERENCES `service_provider` (`staff_id`),
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`);
+  ADD CONSTRAINT `CustomerID` FOREIGN KEY (`ClientID`) REFERENCES `client` (`ClientID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `LaborID` FOREIGN KEY (`ServiceID`) REFERENCES `service` (`ServiceID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
