@@ -1,0 +1,22 @@
+<html><!DOCTYPE html>
+<head>
+	<title>Add Service</title>
+</head>
+<body>
+<h1>Add a Service</h1>
+
+<form method="POST" action="/addservice">
+  <label for="service_name"> Service Name </label>
+  <input type="text" name="service_name" value="<%= qs.service_name %>">
+
+  <label for="price"> Price </label>
+  <input type="text" name="price" value="<%= qs.price %>">
+
+  <label for="service_description"> Service Description </label>
+  <input type="text" name="service_description" value="<%= qs.service_description %>">
+
+  <input type="submit" value="submit">
+</form>
+
+</body>
+</html>
