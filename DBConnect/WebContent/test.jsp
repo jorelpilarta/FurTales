@@ -101,7 +101,8 @@
 				</c:forEach>
 			</table>
 		</div>	
-		<p><a href='history.jsp'>View Past Transactions</a></p>
-		<p><a href='logout.jsp'>Log out</a></p>
+		<p><a href="history.jsp">View Past Transactions</a></p>
+		<p><a href="profile.jsp?id=<%= session.getAttribute("email") %>">View Profile Page</a></p>
+		<p><a href="logout.jsp">Log out</a></p>
 	</body>
 </html>
