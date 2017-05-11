@@ -1,41 +1,88 @@
-<html><!DOCTYPE html>
+<!DOCTYPE html>
+<html>
 <head>
-	<title>SP Registration Form</title>
+	<title>Registration Form</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="./stylesheet/styles.css" rel="stylesheet" type = "text/css" media="screen">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<h1>Registration Form</h1>
-
-<form method="POST" action="/spreg">
-  <label for="staff_id"> Id </label>
-  <input type="text" name="staff_id" value="<%= spreg.last_name %>">
-  <br>
-
-  <label for="last_name"> Last Name </label>
-  <input type="text" name="last_name" value="<%= spreg.last_name %>">
-  <br>
-
-  <label for="first_name"> First Name </label>
-  <input type="text" name="first_name" value="<%= spreg.first_name %>">
-  <br>
-
-  <label for="service_id"> Service Id </label>
-  <input type="text" name="service_id" value="<%= spreg.service_id %>">
-  <br>
-
-  <label for="sp_email"> Email </label>
-  <input type="text" name="sp_email" value="<%= spreg.sp_email%>">
-  <br>
-
-  <label for="sp_cn"> Contact Number </label>
-  <input type="text" name="sp_cn" value="<%= spreg.sp_cn %>">
-  <br>
-
-  <label for="sp_pw"> Password </label>
-  <input type="text" name="sp_pw" value="<%= spreg.sp_pw %>">
-  <br>
-
-  <input type="submit" value="submit">
-</form>
-
+<body style="background-color: #99d8e8">
+	<div class="container" style="background-color: #ffffd3">
+	
+	<div class="container">
+	<img src="stylesheet/image/logo.png" alt="logo">
+	</div><!--end of header logo-->
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		<ul class="nav navbar-nav">
+		<li><a href="admin.ejs">View Admin</a></li>
+			<li><a href="service.ejs">View Services</a></li>
+			<li><a href="client.ejs">View Clients</a></li>
+			<li><a href="clientreg.ejs">New Clients</a></li>
+			<li><a href="sp.ejs">View Service Providers</a></li>
+			<li><a href="spreg.ejs">New Service Provider</a></li>
+		</ul>
+    </ul>
+  </div><!--end of container-fluid-->
+</nav><!--end of top navigation bar-->
+	
+<div class="col-md-6" style="background-color: d4d4d4"><!--start of sp registration-->
+  <h3>Service Provider Registration Form</h3>
+  
+  <form class="form-horizontal" id="register" method="POST" action=" /spreg">
+  <div class="form-group">
+      <label class="control-label col-sm-3" for="staff_id">ID:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="staff_id" value="<%= spreg.last_name%>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="last_name">Last Name:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" placeholder="Enter last name" name="last_name" value="<%= spreg.last_name%>">
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-3" for="first_name">First Name:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" placeholder="Enter first name" name="first_name" value="<%= spreg.first_name%>">
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-3" for="service_id">Service ID:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="staff_id" value="<%= spreg.service_id%>">
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-3" for="sp_email">Email:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" placeholder="Enter email" name="sp_email" value="<%= spreg.sp_email%>">
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-3" for="sp_cn">Contact Number:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" placeholder="Enter Contact Number" name="sp_cn" value="<%= spreg.sp_cn%>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="sp_pw">Password:</label>
+      <div class="col-sm-6">          
+        <input type="text" class="form-control" placeholder="Enter password" name="sp_pw" value="<%=spreg.sp_pw%>">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-12">
+        <button type="submit" class="btn btn-default" value="submit">Submit</button>
+      </div>
+    </div>
+</div>
+</form><!--end of registration form-->
+	</div><!--end of the main container-->
 </body>
 </html>
