@@ -1,17 +1,47 @@
-<html><!DOCTYPE html>
+<!DOCTYPE html>
+<html>
 <head>
-	<title> Admins</title>
+	<title>Admin</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="./stylesheet/styles.css" rel="stylesheet" type = "text/css" media="screen">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<h1>Admin List</h1>
-<table border="1" cellpadding="7" cellspacing="7">
-	<tr>
-    <th width="50px">No</th>
-    <th>Admin Id</th>
-    <th>Last Name</th>
-    <th>First Name</th>
-  </tr>
-  <% if(admin.length){
+<body style="background-color: #99d8e8">
+	<div class="container" style="background-color: #ffffd3">
+	
+	<div class="container">
+	<img src="stylesheet/image/logo.png" alt="logo">
+	</div><!--end of header logo-->
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li><a href="admin.ejs">View Admin</a></li>
+			<li><a href="service.ejs">View Services</a></li>
+			<li><a href="client.ejs">View Clients</a></li>
+			<li><a href="clientreg.ejs">New Clients</a></li>
+			<li><a href="sp.ejs">View Service Providers</a></li>
+			<li><a href="spreg.ejs">New Service Provider</a></li>
+		</ul>
+    </ul>
+  </div><!--end of container-fluid-->
+</nav><!--end of top navigation bar-->
+
+<div class="container">
+  <h2>Admins</h2>    
+  <table class="table table-striped">
+    <thead>
+      <tr>
+		<th>No.</th>
+		<th>Admin ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+      </tr>
+    </thead>
+	<% if(admin.length){
     for(var i = 0;i < admin.length;i++) { %>
   <tr>
     <td><%=(i+1)%></td>
@@ -25,8 +55,10 @@
   <tr>
     <td colspan="3">No user</td>
   </tr>
-<% } %>
-</table>
+	<% } %>
+  </table>
+</div><!--end of class container-->
 
+	</div><!--end of the main container-->
 </body>
 </html>
