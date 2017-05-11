@@ -1,18 +1,47 @@
-<html><!DOCTYPE html>
+<!DOCTYPE html>
+<html>
 <head>
-	<title> Services </title>
+	<title>Services</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="./stylesheet/styles.css" rel="stylesheet" type = "text/css" media="screen">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<h1>Service List</h1>
-<table border="1" cellpadding="7" cellspacing="7">
-	<tr>
-    <th width="50px">No</th>
-    <th>Service Id</th>
-    <th>Service Name</th>
-    <th>Price</th>
-    <th>Service Description </th>
-  </tr>
-  <% if(service.length){
+<body style="background-color: #99d8e8">
+	<div class="container" style="background-color: #ffffd3">
+	
+	<div class="container">
+	<img src="stylesheet/image/logo.png" alt="logo">
+	</div><!--end of header logo-->
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		<ul class="nav navbar-nav">
+		<li><a href="admin.ejs">View Admin</a></li>
+			<li><a href="service.ejs">View Services</a></li>
+			<li><a href="client.ejs">View Clients</a></li>
+			<li><a href="clientreg.ejs">New Clients</a></li>
+			<li><a href="sp.ejs">View Service Providers</a></li>
+			<li><a href="spreg.ejs">New Service Provider</a></li>
+		</ul>
+  </div><!--end of container-fluid-->
+</nav><!--end of top navigation bar-->
+		
+	<div class="container">
+  <h2>Service</h2>    
+  <table class="table table-striped">
+    <thead>
+      <tr>
+		<th>No.</th>
+		<th>Service ID</th>
+        <th>Service Name</th>
+        <th>Price</th>
+		<th>Service Description</th>
+      </tr>
+    </thead>
+     <% if(service.length){
     for(var i = 0;i < service.length;i++) { %>
   <tr>
     <td><%=(i+1)%></td>
@@ -28,7 +57,8 @@
     <td colspan="3">No user</td>
   </tr>
 <% } %>
-</table>
-
+  </table>
+</div><!--end of tables-->
+	</div><!--end of the main container-->
 </body>
 </html>
