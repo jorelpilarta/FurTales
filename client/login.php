@@ -1,3 +1,5 @@
+<html>
+
 <?php
 require 'fragments/dbcon.php';
 
@@ -26,5 +28,5 @@ if (isset($_POST['submit']))
         echo "Login Failed";
     }
 }
-
 ?>
+</html>
