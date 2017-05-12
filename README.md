@@ -52,6 +52,7 @@ If there is no error, open a browser: ipaddress:port/Bin (example: 192.168.0.114
 	<Connector port="**port number**" protocol="HTTP/1.1"
 	
 Admin(NodeJS)
+
 SETUP AND CONFIGURATION INSTRUCTIONS
 1. Check that you have NodeJS installed on your system. To do this, open command prompt and type node -v. If the version of NodeJS is shown, you have it installed. If it returns an error, you don't have it installed. To install Node.js, execute the program "node-v4.4.4-x86.msi" under Setup folder. Click "Next" and check the "Accept Terms and Condition" and wait for it to finish installation. After the installation, you should again check the version of node by opening command prompt and type "node -v" and make sure it displays the current node version.
 2. Run the WampServer. The wamp icon should then appear on your notification area and make sure that the icon has a color of green.
