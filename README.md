@@ -27,3 +27,48 @@ Client(PHP)
  
  5. Log in using a registered taker
 
+        ┌─────────────────┬───────────────────┐
+				│User Name	      │	User Password     │
+				├─────────────────┼───────────────────┤
+				│   		          │	                  │
+				│	                │	                  │
+				│	                │	                  │
+				│	                │	                  │
+				└─────────────────┴───────────────────┘
+        
+Service Provider(Java)
+1. Open Netbeans IDE
+2. Go to File, click open project and choose Service Provider(Java)/Bin
+    **Note:** if there is a password existing for MySql, it should be added to web.xml
+    1. Under the Projects Bin in the Projects, double click on web pages folder then choose WEB-INF and open web.xml
+    2. <param-name>password</param-name>
+       <param-value>**Put your password here**</param-value>
+	  3. ctrl+s to save
+	
+3. Go to Projects, and select Bin.
+4. Right click and choose Deploy
+If there is no error, open a browser: ipaddress:port/Bin (example: 192.168.0.114:8080/Bin)
+
+	*Note: to check the ipaddress
+	1. open cmd / command prompt.
+	2. type ipconfig and press enter
+	3. Find IPv4 address and you can see the ipaddress
+
+	*Note: to check the port
+	1. Go to services, under the windows tab in the menu bar, and choose servers
+	2. Right click on Apache Tomcat or TomEE
+	3. Choose and open edit server.xml
+	4. You can find the current port number in the 
+	<Connector port="**port number**" protocol="HTTP/1.1"
+  
+_________________________
+|Credentials:		        |
+|-----------|-----------|
+|Username   |	Password  |
+|-----------|-----------|
+|           |	          |
+|           |		        |
+|	          |	          |
+|	          |		        |
+|           |		        |
+|___________|___________|
