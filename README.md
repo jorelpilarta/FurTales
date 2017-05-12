@@ -68,3 +68,9 @@ SETUP AND CONFIGURATION INSTRUCTIONS
 6. Open a command prompt window on the folder where app.js is located. You can simply do this by pressing Ctrl+Shift+Right Click and choose Open command window here.
 7. Type in node app.js on command prompt and this should start up the server.
 8. You should then be able to access the Admin Module on your browser by simply entering localhost:3000 on your address bar.
+
+HOW TO FIND USER CREDENTIALS FOR PHPMYADMIN
+1. Go to this directory: wamp\apps\phpmyadmin[version]\
+2. Find and open the file named config.inc.php on a text editor of your choice.
+3. Hit Ctrl+F on your keyboard and enter $cfg['Servers'][$i]['user']
+4. The value of $cfg['Servers'][$i]['user'] should be placed on the user field on app.js and the value of $cfg['Servers'][$i]['password'] should be placed on the password field on app.js if there is.
