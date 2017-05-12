@@ -27,14 +27,6 @@ var connection = mysql.createConnection({
   database: 'furtales'
 })
 
-connection.connect(function(error) {
-	if (!!error) {
-		console.log('Error');
-	} else {
-		console.log('Connection established');
-	}
-});
-
 // Main page
 app.get('/', function(req, res){
 	res.render('index');
@@ -42,7 +34,7 @@ app.get('/', function(req, res){
 
 // View admins
 app.get('/admin', function(req, res){
-  connection.query("SELECT admin_id, last_name, first_name FROM admin", function(err, rows, fields){
+  connection.query("SELECT * FROM admin", function(err, rows, fields){
     if (err){
     	console.log("Error in query");
     	return;
@@ -69,7 +61,7 @@ app.get('/clientreg', function(req, res){
 
 app.post('/clientreg', urlencodedParser, function(req, res){
 	var client = {
-  	last_name	: req.body.last_name,
+    last_name	: req.body.last_name,
   	first_name	: req.body.first_name,
   	client_address : req.body.client_address,
   	client_cn	: req.body.client_cn,
@@ -79,7 +71,8 @@ app.post('/clientreg', urlencodedParser, function(req, res){
 	connection.query('INSERT INTO client set ?', client, function(err, rows, field){
 		if(err)
         console.log("Error Selecting : %s ", err);
-        res.render('clientreg',{page_title:"Client Registration", qs:rows});
+        entry = rows;
+        return res.redirect('/client');
 	})
 })
 
@@ -127,6 +120,14 @@ app.post('/spreg', urlencodedParser, function(req, res){
         res.render('spreg',{page_title:"SP Registration", spreg:rows});
 	})
 })
+
+app.post('/accept', function(req, res){
+	connection.query("UPDATE user SET membership_status = '1' WHERE client_id = '" + req.body.client_id +"'", function(err, rows){
+		if (err){ console.error(err); return}
+
+		res.redirect('/sp');
+	});
+});
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
