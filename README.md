@@ -26,15 +26,6 @@ Client(PHP)
   4.2 On the address bar, type local host.
  
  5. Log in using a registered taker
-
-        ┌─────────────────┬───────────────────┐
-				│User Name	      │	User Password     │
-				├─────────────────┼───────────────────┤
-				│   		          │	                  │
-				│	                │	                  │
-				│	                │	                  │
-				│	                │	                  │
-				└─────────────────┴───────────────────┘
         
 Service Provider(Java)
 1. Open Netbeans IDE
@@ -43,8 +34,7 @@ Service Provider(Java)
     1. Under the Projects Bin in the Projects, double click on web pages folder then choose WEB-INF and open web.xml
     2. <param-name>password</param-name>
        <param-value>**Put your password here**</param-value>
-	  3. ctrl+s to save
-	
+	  3. ctrl+s to save		  
 3. Go to Projects, and select Bin.
 4. Right click and choose Deploy
 If there is no error, open a browser: ipaddress:port/Bin (example: 192.168.0.114:8080/Bin)
@@ -60,15 +50,21 @@ If there is no error, open a browser: ipaddress:port/Bin (example: 192.168.0.114
 	3. Choose and open edit server.xml
 	4. You can find the current port number in the 
 	<Connector port="**port number**" protocol="HTTP/1.1"
-  
-_________________________
-|Credentials:		        |
-|-----------|-----------|
-|Username   |	Password  |
-|-----------|-----------|
-|           |	          |
-|           |		        |
-|	          |	          |
-|	          |		        |
-|           |		        |
-|___________|___________|
+	
+Admin(NodeJS)
+SETUP AND CONFIGURATION INSTRUCTIONS
+1. Check that you have NodeJS installed on your system. To do this, open command prompt and type node -v. If the version of NodeJS is shown, you have it installed. If it returns an error, you don't have it installed. To install Node.js, execute the program "node-v4.4.4-x86.msi" under Setup folder. Click "Next" and check the "Accept Terms and Condition" and wait for it to finish installation. After the installation, you should again check the version of node by opening command prompt and type "node -v" and make sure it displays the current node version.
+2. Run the WampServer. The wamp icon should then appear on your notification area and make sure that the icon has a color of green.
+3. Open a browser and type localhost/phpmyadmin on the address bar.
+4. Import the sql file named binili.sql. To do this, go to the Import tab of phpMyAdmin. Click on Choose File and find bin99.sql (bin99.sql is found on the db folder of the submitted project requirement). Once you have chosen the sql file, click on Go.
+5. Open the Admin Module folder and open the file called app.js on a text editor of your choice. Scroll down a bit and you should see these lines of code:
+	var connection = mysql.createConnection({
+    		host: 'localhost',
+    		user: 'root',
+    		password: '',
+    		database: 'bin'
+	});
+   Verify that the values entered for user and password are correct. If you are not sure on what should be the value for user and password, see the steps below to check what is the username and password that you use for phpMyAdmin. However, these values that are already set are the default access credentials for phpMyAdmin. Once that's done, save and close the file.
+6. Open a command prompt window on the folder where app.js is located. You can simply do this by pressing Ctrl+Shift+Right Click and choose Open command window here.
+7. Type in node app.js on command prompt and this should start up the server.
+8. You should then be able to access the Admin Module on your browser by simply entering localhost:3000 on your address bar.
