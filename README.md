@@ -72,5 +72,5 @@ SETUP AND CONFIGURATION INSTRUCTIONS
 HOW TO FIND USER CREDENTIALS FOR PHPMYADMIN
 1. Go to this directory: wamp\apps\phpmyadmin[version]\
 2. Find and open the file named config.inc.php on a text editor of your choice.
-3. Hit Ctrl+F on your keyboard and enter $cfg['Servers'][$i]['user']
+3. Press Ctrl+F on your keyboard and enter $cfg['Servers'][$i]['user']
 4. The value of $cfg['Servers'][$i]['user'] should be placed on the user field on app.js and the value of $cfg['Servers'][$i]['password'] should be placed on the password field on app.js if there is.
