@@ -9,7 +9,7 @@ if (isset($_POST['submit']))
     $em = $_POST['email'];
     $pw = $_POST['password'];
  
-    $sql = "SELECT * FROM `client` WHERE client_email='$em' and password='$pw'";
+    $sql = "SELECT * FROM `client` WHERE client_email='$em' and password='$pw' and member_status='member'";
     $result = mysqli_query($db, $sql) or die(mysql_error());
     $row = $result->fetch_assoc();
     $count = mysqli_num_rows($result);
@@ -25,7 +25,7 @@ if (isset($_POST['submit']))
     }
     else 
     {
-        echo "Login Failed";
+        header('Location: loginfail.php');
     }
 }
 ?>

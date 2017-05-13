@@ -10,7 +10,7 @@
         session_start();
         $cid = $_SESSION['myvar'];
 
-    	$sql = "SELECT * FROM client NATURAL JOIN transaction NATURAL JOIN service WHERE client_id='$cid' AND payment_status='Not Paid' AND request_status='Accepted' ORDER BY transactions_date ASC";
+    	$sql = "SELECT * FROM client NATURAL JOIN transaction NATURAL JOIN service NATURAL JOIN sprice WHERE client_id='$cid' AND payment_status='Not Paid' AND request_status='Accepted' ORDER BY transactions_date ASC";
     	$result = mysqli_query($db, $sql);
 
     	if ($result->num_rows > 0) 

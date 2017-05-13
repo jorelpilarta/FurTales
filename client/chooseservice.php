@@ -39,11 +39,11 @@
 
     	if ($result->num_rows > 0) 
     	{
-	    	echo "<table class='table table-striped'><tr><th>ID</th><th>Name</th><th>Price</th><th></th></tr>";
+	    	echo "<table class='table table-striped'><tr><th>Service Name</th><th>Description</th></tr>";
 	    	// output data of each row
 	    	while($row = $result->fetch_assoc()) 
 	    	{
-        		echo "<tr><td>".$row["service_id"]."</td><td>".$row["service_name"]."</td><td> ".$row["price"]."</td><td><a href='storeservice.php?id=".$row["service_id"]."' class='btn-primary btn-sm'>Choose</a></td></tr>";
+        		echo "<tr><td>".$row["service_name"]."</td><td>".$row["service_description"]."</td><td><a href='storeservice.php?id=".$row["service_id"]."' class='btn-primary btn-sm'>Choose</a></td></tr>";
     		}
     			echo "</table>";		
 		} 

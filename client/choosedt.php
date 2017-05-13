@@ -2,8 +2,10 @@
 	require 'fragments/getset.php';
 
 	$staffid = $_GET['staffid'];
+	$price = $_GET['price'];
     session_start();
     array_push($_SESSION['transaction'],$staffid);
+    array_push($_SESSION['transaction'],$price);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +29,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
-				<li><a href="#home">You are Logged in as <?php print_r($_SESSION['myemail']); ?></a></li>
+				<li><a href="success.php">You are Logged in as <?php print_r($_SESSION['myemail']); ?></a></li>
 				<li><a href="#services"><span class="glyphicon glyphicon-dog"></span>Services</a></li>
 				<li><a href="#spPart">Service Provider</a></li>
 				<li><a href='chooseservice.php'>Make a Reservation</a></li>
@@ -36,8 +38,9 @@
 			</ul>
 		</div>
 	</nav>
+	
 	<h3>Choose a Date</h3>
-	<h4>Choosing a specific date and time for your service.</h4>
+	<h4>Choose a specific date and time for your service.</h4>
 
         <form action="review.php" method="GET">
             <label>Choose a date:</label>

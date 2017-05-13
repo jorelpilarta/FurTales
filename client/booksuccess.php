@@ -3,16 +3,17 @@
     $clientid = $_SESSION['myvar'];
 	$serviceid = $_SESSION['transaction'][0];
     $spid = $_SESSION['transaction'][1];
-    $date = $_SESSION['transaction'][2];
-    $time = $_SESSION['transaction'][3];
+    $price = $_SESSION['transaction'][2];
+    $date = $_SESSION['transaction'][3];
+    $time = $_SESSION['transaction'][4];
+    echo print_r($_SESSION['transaction']);
 
     require 'fragments/dbcon.php';
-    $sql = "SELECT * FROM service WHERE service_id='$serviceid'";
+    $sql = "SELECT * FROM service NATURAL JOIN sprice WHERE service_id='$serviceid' AND staff_id='spid'";
     $result = mysqli_query($db, $sql);
     $row = $result->fetch_assoc();
-    $price = $row["price"];
 
-    $insert = "INSERT INTO transaction (client_id, service_id, staff_id, transactions_date, transaction_time) VALUES ('$clientid', '$serviceid', '$spid', '$date', '{$time}:00')";
+    $insert = "INSERT INTO transaction (client_id, service_id, staff_id, transactions_date, transaction_time, price) VALUES ('$clientid', '$serviceid', '$spid', '$date', '{$time}:00', '$price')";
     if(mysqli_query($db, $insert))
     {
         echo "";
