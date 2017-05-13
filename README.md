@@ -62,6 +62,16 @@ If there is no error, open a browser: ipaddress:port/Bin (example: 192.168.0.114
 	4. You can find the current port number in the 
 	<Connector port="**port number**" protocol="HTTP/1.1"
 	
+				┌───────────────────────────┬──────────────────────────┐
+				│Service Provider Email	    │Service Provider Password │
+				├───────────────────────────┼──────────────────────────┤
+				│liwanag.john1234@gmail.com │	  1234                 │
+				│mendezcamila@gmail.com     │	  1234                 │
+				│             	            │	                       │
+				│         	            │	                       │
+				└───────────────────────────┴──────────────────────────┘
+				
+	
 Admin(NodeJS)
 
 SETUP AND CONFIGURATION INSTRUCTIONS
@@ -80,6 +90,8 @@ SETUP AND CONFIGURATION INSTRUCTIONS
 6. Open a command prompt window on the folder where app.js is located. You can simply do this by pressing Ctrl+Shift+Right Click and choose Open command window here.
 7. Type in node app.js on command prompt and this should start up the server.
 8. You should then be able to access the Admin Module on your browser by simply entering localhost:3000 on your address bar.
+
+				
 
 HOW TO FIND USER CREDENTIALS FOR PHPMYADMIN
 1. Go to this directory: wamp\apps\phpmyadmin[version]\
