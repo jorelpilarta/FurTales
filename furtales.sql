@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2017 at 04:45 PM
+-- Generation Time: May 13, 2017 at 06:29 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -68,16 +68,17 @@ CREATE TABLE `client` (
   `client_address` varchar(100) NOT NULL,
   `client_cn` varchar(13) NOT NULL,
   `client_email` varchar(50) NOT NULL,
-  `password` varchar(10) NOT NULL
+  `password` varchar(10) NOT NULL,
+  `member_status` varchar(15) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`client_id`, `last_name`, `first_name`, `client_address`, `client_cn`, `client_email`, `password`) VALUES
-(3000, 'Mortel', 'Bobbie', '123 Fake Street', '09774835197', 'mortelbobbie@gmail.com', '1234'),
-(3001, 'Ugaldo', 'Jovi', '456 Real Street', '09271523259', 'ugaldojovi@gmail.com', '1234');
+INSERT INTO `client` (`client_id`, `last_name`, `first_name`, `client_address`, `client_cn`, `client_email`, `password`, `member_status`) VALUES
+(3000, 'Mortel', 'Bobbie', '123 Fake Street', '09774835197', 'mortelbobbie@gmail.com', '1234', 'pending'),
+(3001, 'Ugaldo', 'Jovi', '456 Real Street', '09271523259', 'ugaldojovi@gmail.com', '1234', 'member');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,6 @@ INSERT INTO `client` (`client_id`, `last_name`, `first_name`, `client_address`, 
 CREATE TABLE `service` (
   `service_id` smallint(5) NOT NULL,
   `service_name` varchar(20) NOT NULL,
-  `price` double NOT NULL,
   `service_description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -96,10 +96,10 @@ CREATE TABLE `service` (
 -- Dumping data for table `service`
 --
 
-INSERT INTO `service` (`service_id`, `service_name`, `price`, `service_description`) VALUES
-(4000, 'Bath and Tidy', 500, 'Full body bath'),
-(4001, 'Full Style and Groom', 600, 'Full style and groom'),
-(4002, 'Pamper Me', 650, 'Full groom with 5 minute therapeutic massage');
+INSERT INTO `service` (`service_id`, `service_name`, `service_description`) VALUES
+(4000, 'Bath and Tidy', 'Full body bath'),
+(4001, 'Full Style and Groom', 'Full style and groom'),
+(4002, 'Pamper Me', 'Full groom with 5 minute therapeutic massage');
 
 -- --------------------------------------------------------
 
@@ -111,19 +111,42 @@ CREATE TABLE `service_provider` (
   `staff_id` smallint(5) NOT NULL,
   `last_name` varchar(15) NOT NULL,
   `first_name` varchar(15) NOT NULL,
-  `service_id` smallint(5) NOT NULL,
   `sp_email` varchar(50) NOT NULL,
   `sp_cn` varchar(13) NOT NULL,
-  `sp_pw` varchar(10) NOT NULL
+  `sp_pw` varchar(10) NOT NULL,
+  `member_status` varchar(15) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `service_provider`
 --
 
-INSERT INTO `service_provider` (`staff_id`, `last_name`, `first_name`, `service_id`, `sp_email`, `sp_cn`, `sp_pw`) VALUES
-(2000, 'Liwanag', 'John Derick', 4000, 'liwanag.john1234@gmail.com', '09269543937', '1234'),
-(2001, 'Mendez', 'Camila', 4001, 'mendezcamila@gmail.com', '09152044933', '1234');
+INSERT INTO `service_provider` (`staff_id`, `last_name`, `first_name`, `sp_email`, `sp_cn`, `sp_pw`, `member_status`) VALUES
+(2000, 'Liwanag', 'John Derick', 'liwanag.john1234@gmail.com', '09269543937', '1234', 'member'),
+(2001, 'Mendez', 'Camila', 'mendezcamila@gmail.com', '09152044933', '1234', 'member');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sprice`
+--
+
+CREATE TABLE `sprice` (
+  `spriceid` smallint(5) NOT NULL,
+  `service_id` smallint(5) NOT NULL,
+  `staff_id` smallint(5) NOT NULL,
+  `price` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sprice`
+--
+
+INSERT INTO `sprice` (`spriceid`, `service_id`, `staff_id`, `price`) VALUES
+(6000, 4000, 2000, 500),
+(6001, 4000, 2001, 500),
+(6002, 4001, 2000, 600),
+(6003, 4001, 2001, 650);
 
 -- --------------------------------------------------------
 
@@ -143,8 +166,8 @@ CREATE TABLE `sp_details` (
 --
 
 INSERT INTO `sp_details` (`sp_email`, `description`, `work_exp`, `fav_pet`) VALUES
-('liwanag.john1234@gmail.com', 'I JUST UPDATED MY DESCRIPTION!', ' Chief Floor Manager at Krusty Krab, CEO at Google, CEO at Facebook', ' Dogs, Cats, Hamster, Snakes, Pigs, Elephants '),
-('mendezcamila@gmail.com', 'Hi! My name is Camila Mendez and I love animals', 'Actress at CW, Waitress at Riverdale', 'Dogs, Cats');
+('liwanag.john1234@gmail.com', '  I love dogs and cats!  ', '  Chief Floor Manager at Krusty Krab, CEO at Google, CEO at Facebook ', '  Dogs, Cats, Hamster, Snakes, Pigs, Elephants, Ants, Grasshoppers '),
+('mendezcamila@gmail.com', ' Hi! My name is Camila Mendez and I love animals ', 'Actress at CW, Waitress at Riverdale', 'Dogs, Cats');
 
 -- --------------------------------------------------------
 
@@ -160,29 +183,21 @@ CREATE TABLE `transaction` (
   `transaction_time` time NOT NULL,
   `service_id` smallint(5) NOT NULL,
   `staff_id` smallint(5) NOT NULL,
-  `request_status` varchar(10) NOT NULL DEFAULT 'Pending'
+  `request_status` varchar(10) NOT NULL DEFAULT 'Pending',
+  `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`transaction_id`, `client_id`, `payment_status`, `transactions_date`, `transaction_time`, `service_id`, `staff_id`, `request_status`) VALUES
-(5002, 3000, 'Paid', '2017-05-05', '10:00:00', 4000, 2000, 'Accepted'),
-(5003, 3000, 'Paid', '2017-05-05', '11:00:00', 4001, 2000, 'Accepted'),
-(5004, 3000, 'Paid', '2017-05-05', '04:00:00', 4002, 2000, 'Accepted'),
-(5005, 3001, 'Not Paid', '2017-05-05', '04:00:00', 4000, 2000, 'Declined'),
-(5006, 3000, 'Paid', '2017-05-08', '08:00:00', 4002, 2000, 'Accepted'),
-(5007, 3000, 'Paid', '2017-05-10', '07:00:00', 4000, 2000, 'Accepted'),
-(5008, 3000, 'Not Paid', '2017-05-12', '16:30:00', 4002, 2000, 'Declined'),
-(5009, 3000, 'Not Paid', '2017-05-15', '09:00:00', 4002, 2000, 'Accepted'),
-(5010, 3001, 'Paid', '2017-05-20', '08:00:00', 4001, 2001, 'Accepted'),
-(5011, 3001, 'Not Paid', '2017-05-26', '13:00:00', 4002, 2000, 'Accepted'),
-(5012, 3000, 'Not Paid', '2017-05-27', '10:00:00', 4001, 2000, 'Accepted'),
-(5013, 3000, 'Not Paid', '2017-05-20', '15:03:00', 4001, 2001, 'Accepted'),
-(5014, 3001, 'Not Paid', '2017-05-19', '11:00:00', 4000, 2001, 'Pending'),
-(5015, 3001, 'Not Paid', '2017-05-19', '13:02:00', 4001, 2001, 'Pending'),
-(5016, 3001, 'Not Paid', '2017-05-13', '13:00:00', 4002, 2001, 'Pending');
+INSERT INTO `transaction` (`transaction_id`, `client_id`, `payment_status`, `transactions_date`, `transaction_time`, `service_id`, `staff_id`, `request_status`, `price`) VALUES
+(5000, 3001, 'Paid', '2017-05-14', '08:30:00', 4001, 2001, 'Accepted', 500),
+(5001, 3001, 'Paid', '2017-05-14', '09:00:00', 4002, 2001, 'Accepted', 500),
+(5002, 3001, 'Not Paid', '2017-05-14', '08:00:00', 4001, 2001, 'Accepted', 650),
+(5003, 3001, 'Not Paid', '2017-05-14', '09:00:00', 4000, 2001, 'Accepted', 500),
+(5004, 3001, 'Paid', '2017-05-14', '01:00:00', 4001, 2001, 'Accepted', 650),
+(5005, 3001, 'Paid', '2017-05-14', '10:00:00', 4001, 2000, 'Accepted', 600);
 
 --
 -- Indexes for dumped tables
@@ -218,8 +233,15 @@ ALTER TABLE `service`
 --
 ALTER TABLE `service_provider`
   ADD PRIMARY KEY (`staff_id`),
-  ADD KEY `service_id` (`service_id`),
   ADD KEY `sp_email` (`sp_email`);
+
+--
+-- Indexes for table `sprice`
+--
+ALTER TABLE `sprice`
+  ADD PRIMARY KEY (`spriceid`),
+  ADD UNIQUE KEY `service_id` (`service_id`,`staff_id`),
+  ADD KEY `spid` (`staff_id`);
 
 --
 -- Indexes for table `sp_details`
@@ -267,13 +289,25 @@ ALTER TABLE `service`
 ALTER TABLE `service_provider`
   MODIFY `staff_id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2002;
 --
+-- AUTO_INCREMENT for table `sprice`
+--
+ALTER TABLE `sprice`
+  MODIFY `spriceid` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6004;
+--
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5017;
+  MODIFY `transaction_id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5006;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `sprice`
+--
+ALTER TABLE `sprice`
+  ADD CONSTRAINT `sid` FOREIGN KEY (`service_id`) REFERENCES `service` (`service_id`),
+  ADD CONSTRAINT `spid` FOREIGN KEY (`staff_id`) REFERENCES `service_provider` (`staff_id`);
 
 --
 -- Constraints for table `sp_details`
