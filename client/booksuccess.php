@@ -1,7 +1,7 @@
 <?php
     session_start();
     $clientid = $_SESSION['myvar'];
-	$serviceid = $_SESSION['transaction'][0];
+    $serviceid = $_SESSION['transaction'][0];
     $spid = $_SESSION['transaction'][1];
     $price = $_SESSION['transaction'][2];
     $date = $_SESSION['transaction'][3];
