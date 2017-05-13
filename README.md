@@ -26,6 +26,17 @@ Client(PHP)
   4.2 On the address bar, type local host.
  
  5. Log in using a registered taker
+ 
+ 				
+				┌───────────────────────────┬───────────────────┐
+				│Client Email	            │   Client Password │
+				├───────────────────────────┼───────────────────┤
+				│bobbielynmortel@gmail.com  │	  1234          │
+				│joviugaldo@gmail.com       │	  1234          │
+				│             	            │	                │
+				│         	            │	                │
+				└───────────────────────────┴───────────────────┘
+
         
 Service Provider(Java)
 1. Open Netbeans IDE
