@@ -3,9 +3,9 @@ WebTek Finals Project
 
 ##Client(PHP)
 1. Run the Wamp Server as an administrator.
-  1.1 Right click on the Wamp Server Icon.
-  1.2 Click run as administrator.
-  1.3 Click yes.
+  * Right click on the Wamp Server Icon.
+  * Click run as administrator.
+  * Click yes.
   
 2. Copy the files located in the taker folder to the www directory of the wamp folder.
   2.1 Copy all the contents of the folder name Client.
