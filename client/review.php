@@ -24,9 +24,9 @@
 	<div class="container" style="background-color: #ffffff">
 		
 	<!--header-->
-	<div class="container">
-		<img src="stylesheet/image/logo.png" alt="logo">
-	</div>
+	<div align="center">
+<img src="images/banner.png" alt="logo" style="height:150px; width: 400px">
+</div>
 	<!--header end-->
 		
         <?php
@@ -48,8 +48,6 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li><a href="success.php">You are Logged in as <?php print_r($_SESSION['myemail']); ?></a></li>
-				<li><a href="#services"><span class="glyphicon glyphicon-dog"></span>Services</a></li>
-				<li><a href="#spPart">Service Provider</a></li>
 				<li><a href='chooseservice.php'>Make a Reservation</a></li>
 				<li><a href='reservation.php'>Upcoming Reservations</a></li>
 				<li><a href='logout.php'>Log out</a></li>

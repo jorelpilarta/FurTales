@@ -13,17 +13,15 @@
 
 	<div class="container" style="background-color: #ffffff">
 	<!--header-->
-	<div class="container">
-		<img src="stylesheet/image/logo.png" alt="logo">
-	</div>
+<div align="center">
+<img src="images/banner.png" alt="logo" style="height:150px; width: 400px">
+</div>
 	<!--header end-->
 	
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li><a href="success.php">You are Logged in as <?php session_start(); print_r($_SESSION['myemail']); ?></a></li>
-				<li><a href="#services"><span class="glyphicon glyphicon-dog"></span>Services</a></li>
-				<li><a href="#spPart">Service Provider</a></li>
 				<li><a href='chooseservice.php'>Make a Reservation</a></li>
 				<li><a href='reservation.php'>Upcoming Reservations</a></li>
 				<li><a href='logout.php'>Log out</a></li>
@@ -39,7 +37,7 @@
 
     	if ($result->num_rows > 0) 
     	{
-	    	echo "<table class='table table-striped'><tr><th>Service Name</th><th>Description</th></tr>";
+	    	echo "<table class='table table-striped'><tr><th>Service Name</th><th>Description</th><th></th></tr>";
 	    	// output data of each row
 	    	while($row = $result->fetch_assoc()) 
 	    	{

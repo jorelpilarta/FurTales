@@ -12,9 +12,9 @@
     <body style="background-color: #99d8e8">
 	<div class="container" style="background-color: #ffffff">
 	<!--header-->
-	<div class="container">
-		<img src="stylesheet/image/logo.png" alt="logo">
-	</div>
+	<div align="center">
+<img src="images/banner.png" alt="logo" style="height:150px; width: 400px">
+</div>
 	<!--header end-->
 	
 	<!--top navigation bar-->
@@ -94,8 +94,8 @@
 	<h3>Service Provider</h3>
 	<p>Here are the top list of our service provider. Log in to the website to inquire.</p>
 	</div>
-     <div class="container" id="spPart">
-	<div class="row">
+   <div class="container" id="spPart">
+<div class="row">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="images/liwanag.john1234@gmail.com.jpg" class="img-circle" alt="sp1" width="220" height="220">
 	  <p>John Derick Liwanag</p>

@@ -12,8 +12,8 @@
 <body style="background-color: #99d8e8">
 <div class="container" style="background-color: #ffffff">
 <!--header-->
-<div class="container">
-<img src="/stylesheet/image/logo.png" alt="logo">
+<div align="center">
+<img src="images/banner.png" alt="logo" style="height:150px; width: 400px">
 </div>
 <!--header end-->
 
@@ -150,12 +150,20 @@
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
 	  <p>Service Provider 1</p>
-      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+	  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+	  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+	  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+	  sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
 	  <p>Service Provider 2</p>
-      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+	  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+	  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+	  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+	  sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
 </div>
 </div><!--end of div for the whole sp page-->
