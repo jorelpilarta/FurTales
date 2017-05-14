@@ -138,23 +138,24 @@
 <div class="container" id="spPart">
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
-      <p>Hi, My name is Delacruz, Juan. My Specialty is with dogs in general.
-	  I can handle dogs with aggresive attitude and I can also train them. Inquire for more information.</p>
+      <img src="images/liwanag.john1234@gmail.com.jpg" class="img-circle" alt="sp1" width="220" height="220">
+	  <p>John Derick Liwanag</p>
+      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
     </div>
-	   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
-      <p>Hello child, I am thy creator of this world and you and your animals and all the things you see.
-	  Inquire inside and follow me to make your pet's life like heaven.</p>
-    </div>
-	   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
-      <p>Here is the simple description of the service provider</p>
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <img src="images/mendezcamila@gmail.com.jpg" class="img-circle" alt="sp1" width="220" height="220">
+	  <p>Camilla Mendez</p>
+      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
     </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
-      <p>We are Furtales and we  make your pets life beautiful.
-	  </p>
+	  <p>Service Provider 1</p>
+      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+    </div>
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
+	  <p>Service Provider 2</p>
+      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
     </div>
 </div>
 </div><!--end of div for the whole sp page-->
