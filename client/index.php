@@ -102,44 +102,30 @@
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
 	  <h4>Dog trips</h4>
-      <ul>
-		<li>30 mins walk - P150</li>
-		<li>45 mins walk - P200</li>
-		<li>1 hr walk - P275</li>
-		<li>Beach trip - P300</li>
-		<li>Park trip - P275</li>
-	  </ul>
+		<li>30 mins walk</li>
+		<li>45 mins walk</li>
+		<li>1 hr walk</li>
+		<li>Park trip</li>
     </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
 	  <h4>Pet Styling</h4>
-		<li>Grooming - P400</li>
-		<li>Showering - P200</li>
-		<li>Nail cutting - P200</li>
+		<li>Full Style and Groom</li>
+		<li>Showering</li>
     </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
 	  <h4>Health Check</h4>
-		<li>Regular check-up - P300</li>
-		<li>Oral check - P250</li>
-		<li>Vaccination - P500</li>
-		<li>Anti-rabies injection - P500</li>
+		<li>General check-up</li>
+		<li>Oral check</li>
+		<li>Vaccination</li>
+		<li>Anti-rabies injection</li>
 	  </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
-	  <h4>Boarding Services</h4>
-		<li>30 mins visit - P200</li>
-		<li>1 hour visit - P300</li>
-		<li>Day stay - P200</li>
-		<li>Overnight stay - P400</li>
-		<li>Overnight stay - P400</li>
-		<li>Poop cleaning/scooping - P250</li>
-	</div>
-	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
 	  <h4>Pet Training</h4>
-		<li>Potty training - P300</button></li>
-		<li>Discipline training - P400</li>
+		<li>Potty training</button></li>
+		<li>Discipline training</li>
 
 	</div>
 </div>
