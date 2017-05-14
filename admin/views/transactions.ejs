@@ -1,0 +1,41 @@
+<html><!DOCTYPE html>
+<head>
+  <title>Transactions</title>
+  <link href="styles/list-style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Transaction List</h1>
+    
+    <table border="1" cellpadding="7" cellspacing="7">
+        <tr>
+            <th width="50px">No</th>
+            <th>Transaction ID</th>
+            <th>Service Name</th>
+            <th>Client ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Price</th>
+        </tr>
+        <% if(data.length){
+            for(var i = 0;i < data.length;i++) { %>
+                <tr>
+                    <td><%=(i+1)%></td>
+                    <td><%=data[i].transaction_id%></td>
+                    <td><%=data[i].service_name%></td>
+                    <td><%=data[i].client_id%></td>
+                    <td><%=data[i].transactions_date%></td>
+                    <td><%=data[i].transaction_time%></td>
+                    <td>₱<%=data[i].price%>.00</td>
+                </tr>
+            <% }
+        }else{ %>
+            <tr>
+                <td colspan="3">No user</td>
+            </tr>
+        <% } %>
+    </table>
+    
+    <a href="/homepage2">Return Home</a>
+    
+</body>
+</html>
