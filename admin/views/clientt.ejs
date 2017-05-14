@@ -1,0 +1,54 @@
+<html><!DOCTYPE html>
+<head>
+	<title>Clients</title>
+    <link href="styles/list-style.css" rel="stylesheet">
+</head>
+<body>
+<h1>Client List</h1>
+<table border="1" cellpadding="7" cellspacing="7">
+	<tr>
+    <th width="50px">No</th>
+    <th>Client ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Address</th>
+    <th>Contact Number</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Member status</th>
+    <th> check</th>
+    <th>delete</th>
+  </tr>
+  <% if(data.length){ 
+    for(var i = 0;i < data.length;i++) { %>
+  <tr>
+    <td><%=(i+1)%></td>
+    <td><%=data[i].client_id%></td>
+    <td><%=data[i].last_name%></td>
+    <td><%=data[i].first_name%></td>
+    <td><%=data[i].client_address%></td>
+    <td><%=data[i].client_cn%></td>
+    <td><%=data[i].client_email%></td>
+    <td><%=data[i].password%></td>
+    <td><%=data[i].member_status%></td>
+    <td>
+    <form method="post" action="/clientt"><input type="submit" name="approve" id="app" value="Approve">
+    <input type="hidden" value="<%=data[i].client_id%>" name="client_id">
+    </form>
+    </td>
+    <td>
+    <form method="post" action="/clientt2"><input type="submit" name="delete" id="app" value="Delete">
+    <input type="hidden" value="<%=data[i].client_id%>" name="client_idd">
+    </form>
+    </td>
+  </tr>
+  <% }
+  }else{ %>
+  <tr>
+    <td colspan="3">No user</td>
+  </tr>
+<% } %>
+</table>
+<a href="/homepage2">Return Home</a>
+</body>
+</html>

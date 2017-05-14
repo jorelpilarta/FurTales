@@ -1,0 +1,56 @@
+<html><!DOCTYPE html>
+<head>
+	<title>Service Providers</title>
+    <link href="styles/list-style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Service Providers List</h1>
+    
+    <table border="1" cellpadding="7" cellspacing="7">
+        <tr>
+            <th width="50px">No</th>
+            <th>Sp ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Membership</th>
+            <th>check</th>
+            <th>delete</th>
+        </tr>
+        
+        <% if(data.length){ 
+        for(var i = 0;i < data.length;i++) { %>
+            <tr>
+                <td><%=(i+1)%></td>
+                <td><%=data[i].staff_id%></td>
+                <td><%=data[i].last_name%></td>
+                <td><%=data[i].first_name%></td>
+                <td><%=data[i].sp_email%></td>
+                <td><%=data[i].sp_cn%></td> 
+                <td><%=data[i].member_status%></td>
+                <td>
+                    <form method="post" action="/spp">
+                        <input type="submit" name="approve" id="app" value="Approve">
+                        <input type="hidden" value="<%=data[i].staff_id%>" name="staff_id">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/spp2">
+                        <input type="submit" name="delete" id="app" value="Delete">
+                        <input type="hidden" value="<%=data[i].staff_id%>" name="staff_idd">
+                    </form>
+                </td>   
+            </tr>
+        <% }
+        }else { %>
+            <tr>
+                <td colspan="3">No user</td>
+            </tr>
+        <% } %>
+    </table>
+    
+    <a href="/homepage2">Return Home</a>
+    
+</body>
+</html>
