@@ -3,27 +3,27 @@ WebTek Finals Project
 
 ## Client(PHP)
 1. Run the Wamp Server as an administrator.
-  1. Right click on the Wamp Server Icon.
-  2. Click run as administrator.
-  3. Click yes.
+* Right click on the Wamp Server Icon.
+* Click run as administrator.
+* Click yes.
   
 2. Copy the files located in the taker folder to the www directory of the wamp folder.
-  i. Copy all the contents of the folder name Client.
-  ii. Click on the Wamp Server icon located in the task bar, or the lower right corner of the desktop.
-  iii. Click on www directory.
-  iv. Delete the contents of the folder.
-  v. Paste the copied files.
+* Copy all the contents of the folder name Client.
+* Click on the Wamp Server icon located in the task bar, or the lower right corner of the desktop.
+* Click on www directory.
+* Delete the contents of the folder.
+* Paste the copied files.
   
 3. Import the furtales.sql from the www directory to the phpMyAdmin
-  i. Click on the Wamp Server icon located at the lower right corner of the desktop.
-  ii. Click on phpMyAdmin.
-  iii. Click on the import tab in the upper menu.
-  iv. Click Choose file and select furtales.sql and click open.
-  v. Click "Go" button.
+* Click on the Wamp Server icon located at the lower right corner of the desktop.
+* Click on phpMyAdmin.
+* Click on the import tab in the upper menu.
+* Click Choose file and select furtales.sql and click open.
+* Click "Go" button.
   
  4. Access the localhost in the browser
-  i. Open a web browser (i.e. Google Chrome, Mozilla Firefox, etc.)
-  ii. On the address bar, type local host.
+* Open a web browser (i.e. Google Chrome, Mozilla Firefox, etc.)
+* On the address bar, type local host.
  
  5. Log in using a registered taker
  
