@@ -1,0 +1,102 @@
+body {
+    font-family: "Lato", sans-serif;
+    background: #EBF0F5;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+   	background-color: #001A33;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 30px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #999;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#avatar {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    
+}
+
+.navbar {
+	background-color: #001A33;
+	height: 55px;
+}
+
+span {
+	color: snow;
+}
+
+span:hover{
+	color: black;
+}
+
+p, h3, div {
+	color: #14293D;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 2px solid #c0c0c0;
+}
+
+th {
+	text-align: center;
+	font-size: 20px;
+}
+
+td {
+    border: none;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+	background-color: #cecece;
+	
+}
+
+btn {
+	background-color: #EBF0F5;
+	color: #14293D;
+}
+
+btn:hover{
+	background-color: #D6E0EB;
+}

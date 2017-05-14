@@ -7,10 +7,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Update Work Experience</title>
+        <link rel="stylesheet" type="text/css" href="styles/updatefav.css">
     </head>
     <body>
     
-    
+    	<div class="container">
 	    <sql:setDataSource var="firstname" 
 		driver="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost/furtales"
@@ -26,7 +27,7 @@
 		<form method="post">
 		<textarea style="height: 200px; width: 400px;" name="fav_pet"> <c:out value="${row.fav_pet}" /> </textarea>
 		<br>
-		<input type="submit" value="submit">
+		<input id="sub" type="submit" value="submit">
 		</form>
 		</c:forEach>
 		
@@ -37,8 +38,7 @@
     				<sql:param value="${param.fav_pet}" />
 				</sql:update>
 				<c:if test="${updatedTable>=1}">
-					<font size="5"> Congratulations ! Data inserted
-					successfully.</font>
+					<p id="response">Thank you! Data has been updated.</p>
 				</c:if>
 			</c:catch>
 			<c:if test="${exception!=null}">
@@ -47,8 +47,8 @@
 			</c:if>
 		</c:if>
 		
-		<p><a href="profile.jsp"> View Profile </a></p> 
-		<p><a href="test.jsp"> Back to Schedule </a></p> 
-
+		<p><a href="profile.jsp"><button id="prf" type="button" class="btn">View Profile</button></a></p> 
+		<a href="test.jsp"><button id="sch" type="button" class="btn">Back to Schedule</button></a></p> 
+	</div>
     </body>
 </html>

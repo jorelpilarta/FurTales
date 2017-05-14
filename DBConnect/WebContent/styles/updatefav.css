@@ -1,0 +1,43 @@
+body {
+    background: #EBF0F5;
+}
+
+
+.container {
+ max-width: 450px;
+    margin: auto;
+    background-color: #0A141F;
+    padding: 10px;
+
+}
+
+#sub {
+	background-color: #EBF0F5;
+}
+#sub:hover{
+	background-color: #D6E0EB;
+}
+
+#response {
+	font-size: 20px;
+	color: #f1f1f1;
+}
+
+
+#prf {
+	float: left;
+	margin-left: 100px;
+	background-color: #EBF0F5;
+}
+#prf:hover{
+	background-color: #D6E0EB;
+}
+
+#sch {
+	margin-left: 50px;
+	background-color: #EBF0F5;
+}
+
+#sch:hover{
+	background-color: #D6E0EB;
+}

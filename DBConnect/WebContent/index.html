@@ -2,15 +2,28 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/js" href="bootstrap/css/bootstrap.min.js">
+<link rel="stylesheet" type="text/css" href="styles/index.css">
 <title>Log-in</title>
 </head>
 <body>
 <form action="/DBConnect/inlog" method="post">
-E-mail:<input type="text" name="sp_email">
-<br>
-Password:<input type="password" name="sp_pw">
-<br>
+<div class="imgcontainer">
+<img src="images/banner.PNG" alt="Logo" class="logo">
+</div>
+
+<div class="container">
+<label><b>Email</b></label>
+<input type="text" placeholder="Enter email" name="sp_email" required>
+
+<label><b>Password</b></label>
+<input type="password" placeholder="Enter password" name="sp_pw" required>
+
 <input type="submit" value="Log-in">
+</div>
+
 </form>
 </body>
 </html>
