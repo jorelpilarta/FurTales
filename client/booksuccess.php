@@ -1,12 +1,11 @@
 <?php
     session_start();
     $clientid = $_SESSION['myvar'];
-    $serviceid = $_SESSION['transaction'][0];
+	$serviceid = $_SESSION['transaction'][0];
     $spid = $_SESSION['transaction'][1];
     $price = $_SESSION['transaction'][2];
     $date = $_SESSION['transaction'][3];
     $time = $_SESSION['transaction'][4];
-    echo print_r($_SESSION['transaction']);
 
     require 'fragments/dbcon.php';
     $sql = "SELECT * FROM service NATURAL JOIN sprice WHERE service_id='$serviceid' AND staff_id='spid'";
@@ -39,16 +38,14 @@
 <body style="background-color: #99d8e8">
 	<div class="container" style="background-color: #ffffff">
 	
-	<div class="container">
-		<img src="stylesheet/image/logo.png" alt="logo">
-	</div>
+	<div align="center">
+<img src="images/banner.png" alt="logo" style="height:150px; width: 400px">
+</div>
 	
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li><a href="#home">You are Logged in as <?php print_r($_SESSION['myemail']); ?></a></li>
-				<li><a href="#services"><span class="glyphicon glyphicon-dog"></span>Services</a></li>
-				<li><a href="#spPart">Service Provider</a></li>
 				<li><a href='chooseservice.php'>Make a Reservation</a></li>
 				<li><a href='reservation.php'>Upcoming Reservations</a></li>
 				<li><a href='logout.php'>Log out</a></li>
@@ -59,8 +56,8 @@
 		<h1>THANK YOU FOR choosing Furtales.</h1>
 		<h2>Please wait for your booking to be accepted. Thank You!</h2>
 		
-		<p><a href="success.php" class="btn-primary btn-sm">Back to Home</a></p>
-		<p><a type="submit" href="chooseservice.php" class="btn-primary btn-sm">Make Another Transaction</a></p>
+		<a href="index.php" class = "btn btn-default btn-sm" role="button">Back to Home</a>
+		<a href="chooseservice.php" class = "btn btn-default btn-sm" role="button">Make another transaction</a>
 		<br></br>
 		
 		<?php
