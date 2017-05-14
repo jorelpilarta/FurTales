@@ -51,43 +51,41 @@
       <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
 	  <h4>Dog trips</h4>
       <ul>
-		<li>30 mins walk - P150</li>
-		<li>45 mins walk - P200</li>
-		<li>1 hr walk - P275</li>
-		<li>Beach trip - P300</li>
-		<li>Park trip - P275</li>
+		<li>30 mins walk</li>
+		<li>45 mins walk</li>
+		<li>1 hr walk</li>
+		<li>Park trip</li>
 	  </ul>
     </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
 	  <h4>Pet Styling</h4>
-		<li>Grooming - P400</li>
-		<li>Showering - P200</li>
-		<li>Nail cutting - P200</li>
+		<li>Full Style and Groom</li>
+		<li>Showering</li>
     </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
 	  <h4>Health Check</h4>
-		<li>Regular check-up - P300</li>
-		<li>Oral check - P250</li>
-		<li>Vaccination - P500</li>
-		<li>Anti-rabies injection - P500</li>
+		<li>Regular check-up</li>
+		<li>Oral check</li>
+		<li>Vaccination</li>
+		<li>Anti-rabies injection</li>
 	  </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
 	  <h4>Boarding Services</h4>
-		<li>30 mins visit - P200</li>
-		<li>1 hour visit - P300</li>
-		<li>Day stay - P200</li>
-		<li>Overnight stay - P400</li>
-		<li>Overnight stay - P400</li>
-		<li>Poop cleaning/scooping - P250</li>
+		<li>30 mins visit</li>
+		<li>1 hour visit</li>
+		<li>Day stay</li>
+		<li>Overnight stay</li>
+		<li>Overnight stay</li>
+		<li>Poop cleaning/scooping</li>
 	</div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-rounded" alt="sp1" width="220" height="220">
 	  <h4>Pet Training</h4>
-		<li>Potty training - P300</button></li>
-		<li>Discipline training - P400</li>
+		<li>Potty training</button></li>
+		<li>Discipline training</li>
 	</div>
 	</div>
 	</div>
@@ -96,29 +94,30 @@
 	<h3>Service Provider</h3>
 	<p>Here are the top list of our service provider. Log in to the website to inquire.</p>
 	</div>
-    <div class="container" id="spPart">
+     <div class="container" id="spPart">
 	<div class="row">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
-      <p>Hi, My name is Delacruz, Juan. My Specialty is with dogs in general.
-	  I can handle dogs with aggresive attitude and I can also train them. Inquire for more information.</p>
+      <img src="images/liwanag.john1234@gmail.com.jpg" class="img-circle" alt="sp1" width="220" height="220">
+	  <p>John Derick Liwanag</p>
+      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+    </div>
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <img src="images/mendezcamila@gmail.com.jpg" class="img-circle" alt="sp1" width="220" height="220">
+	  <p>Camilla Mendez</p>
+      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
     </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
-      <p>Hello child, I am thy creator of this world and you and your animals and all the things you see.
-	  Inquire inside and follow me to make your pet's life like heaven.</p>
+	  <p>Service Provider 1</p>
+      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
     </div>
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
       <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
-      <p>Here is the simple description of the service provider</p>
+	  <p>Service Provider 2</p>
+      <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
     </div>
-	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <img src="stylesheet/image/sp.jpg" class="img-circle" alt="sp1" width="220" height="220">
-      <p>We are Furtales and we  make your pets life beautiful.
-	  </p>
-    </div>
-	</div>
-	</div>
+</div>
+</div>
 	
 <hr></hr>
 	<div class="container-fluid">
